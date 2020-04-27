@@ -1,0 +1,1 @@
+TRACK_KEYWORDS = ["#SPY", "$SPY"]

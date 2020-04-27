@@ -1,0 +1,6 @@
+# Fill in with your credentials and rename this file to: private.py
+
+TWITTER_APP_KEY = '<YOUR_TWITTER_APP_KEY>'
+TWITTER_APP_SECRET = '<YOUR_TWITTER_APP_SECRET>'
+TWITTER_KEY = '<YOUR_TWITTER_KEY>'
+TWITTER_SECRET = '<YOUR_TWITTER_SECRET>'
