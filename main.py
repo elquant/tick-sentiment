@@ -1,20 +1,25 @@
 from twitter.api_connector import TwitterConnector
-from twitter.inbound_stream import StreamListener
+from twitter.inbound_processor import StreamListener
 import settings
 import tweepy
 
+
 def connect_to_twitter():
-    print("Establishing connection with Twitter API...")
+    print("Establishing connection to Twitter API...")
     api = TwitterConnector()
     stream_listener = StreamListener()
-    stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-    stream.filter(track=settings.TRACK_KEYWORDS)
-    print("Streaming from Twitter API is now active.")    
-    
+    stream = tweepy.Stream(auth=api.auth,
+                           listener=stream_listener,
+                           daemon=True)
+    stream.filter(track=settings.TRACK_KEYWORDS,
+                  is_async=True)
+
+
 def connect_to_stocktwits():
-    print("Establishing connection with StockTwits API...")
-    print("Streaming from StockTwits API is now active.")
-    
+    print("Establishing connection to StockTwits API...")
+
+
 if __name__ == '__main__':
     connect_to_twitter()
     connect_to_stocktwits()
+    input("Press enter to finish the program...")
