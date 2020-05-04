@@ -6,7 +6,7 @@ from textblob import TextBlob
 from sqlalchemy.exc import ProgrammingError
 
 
-class DataStore():
+class DataStore:
 
     def __init__(self):
         self._db = dataset.connect(settings.CONNECTION_STRING)
@@ -26,7 +26,6 @@ class DataStore():
         bg_color = tweet.user.profile_background_color
         if geo is not None:
             geo = json.dumps(geo)
-
         if coords is not None:
             coords = json.dumps(coords)
 
