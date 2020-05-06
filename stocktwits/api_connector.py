@@ -4,7 +4,7 @@ import settings
 responses = []
 
 for symbol in settings.TICKER_SYMBOLS:
-    url = "{}/{}.json".format(settings.STOCKTWITS_API_URL, symbol)
+    url = f'{settings.STOCKTWITS_API_URL}/{symbol}.json'
     ticker_data = requests.get(url=url)
     for message in ticker_data.json()['messages']:
         responses.append(message['body'])
