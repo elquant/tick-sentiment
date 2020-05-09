@@ -9,7 +9,7 @@ from sqlalchemy.exc import ProgrammingError
 class DataStore:
 
     def __init__(self):
-        self._db = dataset.connect(settings.CONNECTION_STRING)
+        self.db = dataset.connect(settings.CONNECTION_STRING)
 
     def on_tweet(self, tweet, tweet_sentiment):
         description = tweet.user.description
@@ -30,7 +30,7 @@ class DataStore:
             coords = json.dumps(coords)
 
         try:
-            table = self._db[settings.TABLE_NAME]
+            table = self.db[settings.TABLE_NAME]
             table.insert(dict(
                 user_description=description,
                 user_location=loc,
@@ -54,14 +54,14 @@ class DataStore:
 class StreamListener(tweepy.StreamListener):
 
     def __init__(self):
-        self._data_store = DataStore()
+        self.data_store = DataStore()
         tweepy.StreamListener.__init__(self)
 
     def on_status(self, status):
         if hasattr(status, "retweeted_status"):
             return
         blob = TextBlob(status.text)
-        self._data_store.on_tweet(tweet=status, tweet_sentiment=blob.sentiment)
+        self.data_store.on_tweet(tweet=status, tweet_sentiment=blob.sentiment)
 
     def on_error(self, status_code):
         if status_code == 420:

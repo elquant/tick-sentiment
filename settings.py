@@ -1,4 +1,4 @@
-TRACK_KEYWORDS = ["bull", "up", "bear", "down"]
+TRACK_KEYWORDS = ["bull", "bullish", "up", "bear", "bearish", "down"]
 TICKER_SYMBOLS = ["SPY", "SPX", "QQQ", "TLT", "VIX", "GLD"]
 CONNECTION_STRING = "sqlite:///data/twitter.db"
 OUTPUT_FILENAME = "data/tweets.csv"
