@@ -4,4 +4,4 @@ from datafreeze import freeze
 
 db = dataset.connect(settings.CONNECTION_STRING)
 result = db[settings.TABLE_NAME].all()
-freeze(result, format='csv', filename=settings.OUTPUT_FILENAME)
+freeze(result, format='csv', filename=settings.TWEETS_FILE_CSV)

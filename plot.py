@@ -13,7 +13,7 @@ def find_keywords(row, **kwargs):
     return ",".join(found_keywords)
 
 
-tweets = pd.read_csv("data/tweets.csv")
+tweets = pd.read_csv(settings.TWEETS_FILE_CSV)
 tweets["symbols"] = tweets.apply(find_keywords, axis=1, keywords=settings.TICKER_SYMBOLS)
 tweets["keywords"] = tweets.apply(find_keywords, axis=1, keywords=settings.TRACK_KEYWORDS)
 
